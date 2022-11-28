@@ -1,0 +1,37 @@
+.container {
+    list-style: none;
+    margin-top: 0;
+}
+
+.ingredients {
+    list-style: none;
+}
+
+.fillings {
+    margin: 0;
+    padding: 0;
+    max-height: 464px;
+    overflow-y: scroll;
+    list-style: none;
+}
+
+.fillings::-webkit-scrollbar {
+    width: 8px;
+    background-color: #2f2f37;
+  }
+
+.fillings::-webkit-scrollbar-thumb {
+    background-color: #8585AD;
+    border: 3px solid #8585AD;
+  }
+
+.item {
+  display: flex;
+  align-items: center;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}

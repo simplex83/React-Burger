@@ -1,0 +1,17 @@
+.container {
+  margin: 0 auto;
+  padding: 40px;
+}
+
+.main {
+  margin: 0 auto;
+  max-width: 1240px;
+}
+
+.wrapper {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 40px;
+}
