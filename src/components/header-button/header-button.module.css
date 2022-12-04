@@ -1,8 +1,8 @@
 .button {
-    display: flex;
-    margin: 0;
-  }
-  
-  .text_noActive {
-    color: #8585AD;
-  }
+  display: flex;
+  margin: 0;
+}
+
+.text_noActive {
+  color: #8585AD;
+}

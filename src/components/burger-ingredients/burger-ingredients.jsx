@@ -1,44 +1,35 @@
 import React from 'react';
-import { data } from '../../utils/data'
-import { Tab  } from '@ya.praktikum/react-developer-burger-ui-components';
-import styles from "./burger-ingredients.module.css";
+import Tabs from '../tabs/tabs';
+import styles from './burger-ingredients.module.css';
 import Ingredients from '../ingredients/ingredients.jsx';
+import PropTypes from 'prop-types';
+import {typeIngredients} from '../../utils/types';
 
-class BurgerIngredients extends React.Component {
-    render() {
-        const buns = data.filter((item) => item.type === "bun");
-        const sauces = data.filter((item) => item.type === "sauce");
-        const fillings = data.filter((item) => item.type === "main");
-        return (
-    <section className={`${styles.container}`}>      
-    <ul className={`${styles.menu} mb-10`}>
-      <li><Tab>
-        Булки
-      </Tab>
-      </li>
-      <li><Tab>
-        Соусы
-      </Tab>
-      </li>
-      <li><Tab>
-        Начинки
-      </Tab>
-      </li>
-    </ul>
-    <ul className={`${styles.ingredients}`}>
-        <li className={`${styles.ingredients__item}`}>
-          <Ingredients title='Булки' card={buns}/>
+function BurgerIngredients({ data }) {
+
+  const buns = data.filter((item) => item.type === "bun");
+  const sauces = data.filter((item) => item.type === "sauce");
+  const fillings = data.filter((item) => item.type === "main");
+
+  return (
+    <section className={`${styles.container}`}>
+      <Tabs />
+      <ul className={`${styles.ingredients}`}>
+        <li id="breads">
+          <Ingredients title="Булки" card={buns} />
         </li>
-        <li className={`${styles.ingredients__item}`}>
-          <Ingredients title='Соусы' card={sauces}/>
+        <li id="sauces">
+          <Ingredients title="Соусы" card={sauces} />
         </li>
-        <li className={`${styles.ingredients__item}`}>
-          <Ingredients title='Начинки' card={fillings}/>
+        <li id="fillings">
+          <Ingredients title="Начинки" card={fillings} />
         </li>
-    </ul>
+      </ul>
     </section>
-        )
-    }
+  );
+}
+BurgerIngredients.propTypes = {
+  data: PropTypes.arrayOf(typeIngredients).isRequired,
 }
 
-export default BurgerIngredients
+export default BurgerIngredients;
