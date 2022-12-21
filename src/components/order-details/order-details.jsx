@@ -1,12 +1,12 @@
 import React from "react";
 import Done from "../../images/done.svg";
 import styles from "./order-details.module.css";
-
-function OrderDetails() {
+import PropTypes from 'prop-types';
+function OrderDetails({num}) {
   return (
     <>
       <p className={`${styles.num} text text_type_digits-large mt-30`}>
-        034536
+        {num}
       </p>
       <p className={`$ text text_type_main-medium mt-8 mb-15`}>
         идентификатор заказа
@@ -22,5 +22,7 @@ function OrderDetails() {
       </p>
     </>
   );
+}OrderDetails.propTypes = {
+  num: PropTypes.number.isRequired,
 }
 export default OrderDetails;
