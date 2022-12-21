@@ -1,8 +1,11 @@
-import React from 'react';
-import styles from './card.module.css';
-import {CurrencyIcon, Counter} from '@ya.praktikum/react-developer-burger-ui-components';
-import PropTypes from 'prop-types';
-import {typeIngredients} from '../../utils/types';
+import React from "react";
+import styles from "./card.module.css";
+import {
+  CurrencyIcon,
+  Counter,
+} from "@ya.praktikum/react-developer-burger-ui-components";
+import PropTypes from "prop-types";
+import { typeIngredients } from "../../utils/types";
 
 function Card({ card }) {
   return (
@@ -23,7 +26,7 @@ function Card({ card }) {
 }
 
 Card.prototype = {
-  card:typeIngredients.isRequired
-}
+  card: typeIngredients.isRequired,
+};
 
 export default Card;

@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./ingredient-details.module.css";
-import PropTypes from 'prop-types';
-import {typeIngredients} from '../../utils/types';
+import PropTypes from "prop-types";
+import { typeIngredients } from "../../utils/types";
 
 function IngredientDetails({ data }) {
   return (
@@ -59,6 +59,6 @@ function IngredientDetails({ data }) {
 
 IngredientDetails.propTypes = {
   data: PropTypes.arrayOf(typeIngredients).isRequired,
-}
+};
 
 export default IngredientDetails;

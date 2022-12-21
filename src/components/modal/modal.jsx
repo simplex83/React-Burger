@@ -3,9 +3,9 @@ import ReactDOM from "react-dom";
 import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import ModalOverlay from "../modal-overlay/model-overlay";
 import styles from "./modal.module.css";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-function Modal({ setModal, children }) {
+function Modal({ setOrderNum, children }) {
   const modalNode = document.getElementById("modal");
 
   React.useEffect(() => {
@@ -19,7 +19,7 @@ function Modal({ setModal, children }) {
   }, []);
 
   function closePopup() {
-    setModal(false);
+    setOrderNum(0);
   }
 
   const modal = (
@@ -39,7 +39,7 @@ function Modal({ setModal, children }) {
 
 Modal.propTypes = {
   children: PropTypes.node.isRequired,
-  setModal: PropTypes.func.isRequired,
+  setOrderNum: PropTypes.func.isRequired,
 };
 
 export default Modal;

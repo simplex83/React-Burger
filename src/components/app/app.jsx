@@ -4,17 +4,12 @@ import AppHeader from "../app-header/app-header";
 import BurgerIngredients from "../burger-ingredients/burger-ingredients";
 import BurgerConstructor from "../burger-constructor/burger-constructor";
 import { getData } from "../../utils/api";
-import {BurgerContext, BurgerConstructorContext} from "../../services/burger-context";
+import { BurgerContext } from "../../services/burger-context";
 
 function App() {
   const [state, setData] = React.useState({
     hasError: false,
     ingredients: [],
-  });
-  const [stateConstructor, setStateConstructor] = React.useState({
-    bun: [],
-    fillings: [],
-    price: 0,
   });
 
   const getIngredients = () => {
@@ -33,7 +28,6 @@ function App() {
   }, []);
 
   return (
-    
     <div className={`${styles.container}`}>
       <AppHeader />
       <main className={`${styles.main}`}>
@@ -41,24 +35,13 @@ function App() {
           Соберите бургер
         </h1>
         <div className={`${styles.wrapper}`}>
-        <BurgerContext.Provider value={{ state }}>
-        <BurgerConstructorContext.Provider
-                value={{
-                  stateConstructor,
-                  setStateConstructor,
-                }}
-              >
-        
+          <BurgerContext.Provider value={{ state }}>
             <BurgerIngredients />
             <BurgerConstructor />
-
-          </BurgerConstructorContext.Provider>
           </BurgerContext.Provider>
         </div>
       </main>
     </div>
-    
   );
-  
 }
 export default App;
