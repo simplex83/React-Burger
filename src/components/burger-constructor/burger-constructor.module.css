@@ -1,9 +1,14 @@
 .container {
+  border: 1px solid transparent;
   list-style: none;
+  min-height: 300px;
   margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.ingredients {
+.ingredient {
   list-style: none;
 }
 
@@ -25,13 +30,16 @@
   border: 3px solid #8585AD;
 }
 
-.item {
-  display: flex;
-  align-items: center;
-}
-
 .wrapper {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+}
+.newbun {
+  margin: 100px 20px 0px 20px;
+  text-align: center;
+}
+.newmain {
+  margin: 10px 20px 0px 20px;
+  text-align: center;
 }

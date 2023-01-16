@@ -1,46 +1,35 @@
 import React from "react";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import styles from "./app.module.css";
 import AppHeader from "../app-header/app-header";
 import BurgerIngredients from "../burger-ingredients/burger-ingredients";
 import BurgerConstructor from "../burger-constructor/burger-constructor";
-import { getData } from "../../utils/api";
-import { BurgerContext } from "../../services/burger-context";
+import { getIngredients } from "../../services/actions/ingredients";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 function App() {
-  const [state, setData] = React.useState({
-    hasError: false,
-    ingredients: [],
-  });
+  const dispatch = useDispatch();
 
-  const getIngredients = () => {
-    getData()
-      .then((data) => {
-        setData({ ...state, ingredients: data.data });
-      })
-      .catch((err) => {
-        setData({ ...state, hasError: true });
-        return console.log(`Ошибка ${err}, запрос не выполнен`);
-      });
-  };
-
-  React.useEffect(() => {
-    getIngredients();
-  }, []);
+  useEffect(() => {
+    dispatch(getIngredients());
+  }, [dispatch]);
 
   return (
     <div className={`${styles.container}`}>
       <AppHeader />
-      <main className={`${styles.main}`}>
-        <h1 className="text text_type_main-large mt-10 mb-5">
-          Соберите бургер
-        </h1>
-        <div className={`${styles.wrapper}`}>
-          <BurgerContext.Provider value={{ state }}>
+      <DndProvider backend={HTML5Backend}>
+        <main className={`${styles.main}`}>
+          <h1 className="text text_type_main-large mt-10 mb-5">
+            Соберите бургер
+          </h1>
+          <div className={`${styles.wrapper}`}>
             <BurgerIngredients />
             <BurgerConstructor />
-          </BurgerContext.Provider>
-        </div>
-      </main>
+          </div>
+        </main>
+      </DndProvider>
     </div>
   );
 }

@@ -8,10 +8,10 @@ export function getData() {
       },
     })
     return res.then(getResponse)
+    
   }
 
   function getResponse(res) {
-    console.log(res.ok)
     if(res.ok) {
         return res.json()
       } else Promise.reject(`Ошибка ${res.status}`);

@@ -1,26 +1,45 @@
-import React from 'react';
-import { Tab } from '@ya.praktikum/react-developer-burger-ui-components';
-import styles from './tabs.module.css';
+import React from "react";
+import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
+import styles from "./tabs.module.css";
+import PropTypes from "prop-types";
 
-function Tabs() {
-    const [current, setCurrent] = React.useState('breads');
-   
-    function toggleIngredints(current) {
-        setCurrent(current)
-    };
-    
-    return (
-      <div className={`${styles.container} mb-10`}>
-        <a className={`${styles.item}`} href='#breads'><Tab value='breads' active={current === 'breads'}  onClick={() => toggleIngredints("breads")}>
+function Tabs({ currentTab, onClick }) {
+  return (
+    <div className={`${styles.container} mb-10`}>
+      <a className={`${styles.item}`} href="#breads">
+        <Tab
+          value="breads"
+          active={currentTab === "buns"}
+          onClick={(value) => onClick(value)}
+        >
           Булки
-        </Tab></a>
-        <a className={`${styles.item}`} href='#sauces'> <Tab value='sauces' active={current === 'sauces'}  onClick={() => toggleIngredints("sauces")}>
+        </Tab>
+      </a>
+      <a className={`${styles.item}`} href="#sauces">
+        {" "}
+        <Tab
+          value="sauces"
+          active={currentTab === "sauces"}
+          onClick={(value) => onClick(value)}
+        >
           Соусы
-        </Tab></a>
-        <a className={`${styles.item}`} href='#fillings'><Tab href='#fillings' value='fillings' active={current === 'fillings'}  onClick={() => toggleIngredints("fillings")}>
+        </Tab>
+      </a>
+      <a className={`${styles.item}`} href="#fillings">
+        <Tab
+          value="fillings"
+          active={currentTab === "fillings"}
+          onClick={(value) => onClick(value)}
+        >
           Начинки
-        </Tab></a>
-      </div>
-    )
-  }
-export default Tabs
+        </Tab>
+      </a>
+    </div>
+  );
+}
+  Tabs.propTypes = {
+    currentTab: PropTypes.string.isRequired,
+    onClick: PropTypes.func.isRequired
+  };
+
+export default Tabs;

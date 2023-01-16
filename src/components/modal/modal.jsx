@@ -5,9 +5,8 @@ import ModalOverlay from "../modal-overlay/model-overlay";
 import styles from "./modal.module.css";
 import PropTypes from "prop-types";
 
-function Modal({ setOrderNum, children }) {
+function Modal({ closePopup, children }) {
   const modalNode = document.getElementById("modal");
-
   React.useEffect(() => {
     function closelByEscape(evt) {
       if (evt.key === "Escape") {
@@ -17,11 +16,6 @@ function Modal({ setOrderNum, children }) {
     window.addEventListener("keydown", closelByEscape);
     return () => window.removeEventListener("keydown", closelByEscape);
   }, []);
-
-  function closePopup() {
-    setOrderNum(0);
-  }
-
   const modal = (
     <>
       <ModalOverlay closeByOverlay={closePopup} />
@@ -36,10 +30,8 @@ function Modal({ setOrderNum, children }) {
 
   return ReactDOM.createPortal(modal, modalNode);
 }
-
 Modal.propTypes = {
   children: PropTypes.node.isRequired,
-  setOrderNum: PropTypes.func.isRequired,
+  closePopup: PropTypes.func.isRequired,
 };
-
 export default Modal;
