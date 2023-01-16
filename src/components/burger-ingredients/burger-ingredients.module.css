@@ -2,28 +2,21 @@
   max-width: 600px;
 }
 
-.menu {
-    
-    padding: 0;
-    display: flex;
-    list-style: none;
-}
-
 .ingredients {
-    margin: 0;
-    padding: 0;
-    overflow-y: scroll;
-    max-height: 912px;
-    list-style: none;
-    
+  margin: 0;
+  padding: 0;
+  max-height: 912px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  list-style: none;
 }
 
 .ingredients::-webkit-scrollbar {
-    width: 8px;
-    background-color: #2f2f37;
-  }
+  width: 8px;
+  background-color: #2f2f37;
+}
 
-  .ingredients::-webkit-scrollbar-thumb {
-    background-color: #8585AD;
-    border: 3px solid #8585AD;
-  }
+.ingredients::-webkit-scrollbar-thumb {
+  background-color: #8585AD;
+  border: 3px solid #8585AD;
+}
