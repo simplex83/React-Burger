@@ -9,7 +9,6 @@ const initialState = {
   orderRequest: false,
   orderFailed: false,
   orderNumber: null,
-  orderOpened: false,
 };
 
 export const orderDetailsReducer = (state = initialState, action) => {
@@ -18,7 +17,6 @@ export const orderDetailsReducer = (state = initialState, action) => {
       return {
         ...state,
         orderRequest: true,
-        orderOpened: true,
       };
 
     case MAKE_ORDER_SUCCESS:
@@ -34,7 +32,6 @@ export const orderDetailsReducer = (state = initialState, action) => {
         ...state,
         orderRequest: false,
         orderFailed: true,
-        OrderOpened: true,
       };
 
     case MAKE_ORDER_RESET:

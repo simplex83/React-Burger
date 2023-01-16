@@ -17,8 +17,14 @@ export const getIngredients = () => {
       } else {
         dispatch({
           type: GET_INGREDIENTS_FAILED,
-        });
+        })
+        Promise.reject(`Ошибка ${res.status}`)
       }
-    });
+    })
+    .catch(() => {
+      dispatch ({
+        type: GET_INGREDIENTS_FAILED,
+      })
+    })
   };
 };

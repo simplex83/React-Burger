@@ -41,6 +41,6 @@ function Ingredients({ title, card }) {
 }
 Ingredients.propTypes = {
   title: PropTypes.string.isRequired,
-  card: PropTypes.arrayOf(typeIngredients).isRequired,
+  card: PropTypes.arrayOf(typeIngredients.isRequired).isRequired
 };
 export default Ingredients;

@@ -19,9 +19,15 @@ export const createOrder = (items) => {
       } else {
         dispatch({
           type: MAKE_ORDER_FAILED,
-        });
+        })
+        Promise.reject(`Ошибка ${res.status}`)
       }
-    });
+    })
+    .catch(() => {
+      dispatch ({
+        type: MAKE_ORDER_FAILED,
+      })
+    })
   };
 };
 export const closeOrder = () => ({

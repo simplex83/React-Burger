@@ -22,7 +22,7 @@ function BurgerConstructor() {
   const { selectedItems, selectedBun } = useSelector(
     (store) => store.burgerConstructor
   );
-  const { orderOpened } = useSelector((store) => store.orderDetails);
+  const { orderNumber} = useSelector((store) => store.orderDetails);
 
   const dispatch = useDispatch();
   const closePopup = () => {
@@ -128,7 +128,7 @@ function BurgerConstructor() {
           Оформить заказ
         </Button>
       </section>
-      {orderOpened && (
+      {orderNumber && (
         <Modal closePopup={closePopup}>
           <OrderDetails />
         </Modal>
