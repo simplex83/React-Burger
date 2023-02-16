@@ -1,9 +1,12 @@
 import React from "react";
 import styles from "./ingredient-details.module.css";
-import PropTypes from "prop-types";
-import { typeIngredients } from "../../utils/types";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
-function IngredientDetails({ data }) {
+export function IngredientDetails() {
+  const ingredients = useSelector((store) => store.ingredients.ingredients);
+  const { id } = useParams();
+  const data = ingredients.find((el) => el._id === id);
   return (
     <>
       <p
@@ -57,8 +60,8 @@ function IngredientDetails({ data }) {
   );
 }
 
-IngredientDetails.propTypes = {
-  data: PropTypes.arrayOf(typeIngredients).isRequired,
-};
+// IngredientDetails.propTypes = {
+//   data: PropTypes.arrayOf(typeIngredients).isRequired,
+// };
 
 export default IngredientDetails;

@@ -1,0 +1,24 @@
+.wrapper {
+  margin-left: 60px;
+  min-width: 480px;
+}
+
+.form {
+    display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+  }
+  
+  .button {
+    color: #4c4cff;
+    border: none;
+    background: none;
+    cursor: pointer;
+
+  }

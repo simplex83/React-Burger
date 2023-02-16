@@ -8,6 +8,7 @@
 
 .header__list {
   display: flex;
+  gap: 8px;
   justify-self: start;
   align-items: center;
   justify-content: flex-start;
@@ -20,6 +21,8 @@
 
 .header__item {
   display: flex;
+  margin: 16px 20px 16px 9px;
+  
 }
 
 .header__item:last-of-type {
@@ -37,4 +40,16 @@
   height: 88px;
   align-items: center;
   width: 100%;
+}
+.link {
+    margin-left: 11px;
+    color: #8585AD; 
+    list-style-type: none;
+    text-decoration: none;
+}
+.activelink {
+  margin-left: 11px;
+  color: white;
+  list-style-type: none;
+  text-decoration: none;
 }

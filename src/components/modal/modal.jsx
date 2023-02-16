@@ -5,7 +5,7 @@ import ModalOverlay from "../modal-overlay/model-overlay";
 import styles from "./modal.module.css";
 import PropTypes from "prop-types";
 
-function Modal({ closePopup, children }) {
+export function Modal({ closePopup, children }) {
   const modalNode = document.getElementById("modal");
   React.useEffect(() => {
     function closelByEscape(evt) {

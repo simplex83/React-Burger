@@ -3,33 +3,89 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import styles from "./app.module.css";
 import AppHeader from "../app-header/app-header";
-import BurgerIngredients from "../burger-ingredients/burger-ingredients";
-import BurgerConstructor from "../burger-constructor/burger-constructor";
 import { getIngredients } from "../../services/actions/ingredients";
-import { DndProvider } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
+import { Routes, Route, useLocation } from "react-router-dom";
+import {
+  Main,
+  LoginPage,
+  RegisterPage,
+  ForgotPage,
+  ResetPage,
+  ErrorPage,
+  ProfilePage,
+  PersonalPage,
+  IngredientPage,
+} from "../../pages";
+import { ProtectedRouteElement } from "../../components/protect";
+import { getUserInfo } from "../../services/actions/authorization";
+import { Modal } from "../modal/modal";
+import { IngredientDetails } from "../ingredient-details/ingredient-details";
 
-function App() {
+export function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getIngredients());
+    dispatch(getUserInfo());
   }, [dispatch]);
+
+  const location = useLocation();
+  const background = location.state && location.state.background;
 
   return (
     <div className={`${styles.container}`}>
       <AppHeader />
-      <DndProvider backend={HTML5Backend}>
-        <main className={`${styles.main}`}>
-          <h1 className="text text_type_main-large mt-10 mb-5">
-            Соберите бургер
-          </h1>
-          <div className={`${styles.wrapper}`}>
-            <BurgerIngredients />
-            <BurgerConstructor />
-          </div>
-        </main>
-      </DndProvider>
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route
+          path="/login"
+          element={
+            <ProtectedRouteElement forAuth={false} element={<LoginPage />} />
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <ProtectedRouteElement forAuth={false} element={<RegisterPage />} />
+          }
+        />
+        <Route
+          path="/forgot-password"
+          element={
+            <ProtectedRouteElement forAuth={false} element={<ForgotPage />} />
+          }
+        />
+        <Route
+          path="/reset-password"
+          element={
+            <ProtectedRouteElement forAuth={false} element={<ResetPage />} />
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRouteElement forAuth={true} element={<ProfilePage />} />
+          }
+        >
+          <Route path="" element={<PersonalPage />} />
+          {/* <Route path="/orders" element={<OrderPage />}/> */}
+        </Route>
+        <Route path="/*" element={<ErrorPage />} />
+        <Route path={`/ingredients/:id`} element={<IngredientPage />} />
+      </Routes>
+
+      {background && (
+        <Routes>
+          <Route
+            path="ingredients/:id"
+            element={
+              <Modal closePopup={() => window.history.back()}>
+                <IngredientDetails />
+              </Modal>
+            }
+          />
+        </Routes>
+      )}
     </div>
   );
 }

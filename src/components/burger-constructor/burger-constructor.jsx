@@ -17,13 +17,15 @@ import {
 } from "../../services/actions/burger-constructor";
 import { Reorder } from "framer-motion";
 import { ConstructorItem } from "../constructor-item/constructor-item";
+import { useNavigate } from "react-router-dom";
 
 function BurgerConstructor() {
   const { selectedItems, selectedBun } = useSelector(
     (store) => store.burgerConstructor
   );
   const { orderNumber} = useSelector((store) => store.orderDetails);
-
+  const user = useSelector((store) => store.auth.user);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const closePopup = () => {
     dispatch(closeOrder());
@@ -38,6 +40,10 @@ function BurgerConstructor() {
   }, [selectedBun, selectedItems]);
 
   function handleClick() {
+if(!user) {
+  navigate("/login");
+  return;
+}
     const ingredientsId = [];
     selectedBun.map((el) => {
       ingredientsId.push(el._id);
@@ -56,6 +62,7 @@ function BurgerConstructor() {
       dispatch(addIngredient(ingredient));
     },
   });
+
 
   const borderColor = isHover ? "green" : "transparent";
 
