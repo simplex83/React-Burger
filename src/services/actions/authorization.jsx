@@ -58,7 +58,6 @@ export function login(user) {
     });
     getLogin(user)
       .then((res) => {
-        console.log(res);
         if (res.success) {
           setCookie("accessToken", res.accessToken.split("Bearer ")[1]);
           setCookie("refreshToken", res.refreshToken);
@@ -119,9 +118,8 @@ export function update(userData) {
       })
       .catch((res) => {
         dispatch({ type: UPDATE_USER_ERROR });
-        console.log(res);
         if (res.message === "jwt expired") {
-          console.log(res.message);
+          console.error(res.message);
           dispatch(refreshToken(update(userData)));
         }
       });

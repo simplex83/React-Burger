@@ -9,7 +9,6 @@ export const createOrder = (items) => {
     dispatch({
       type: MAKE_ORDER_REQUEST,
     });
-    console.log();
     makeOrder(items).then((res) => {
       if (res && res.success) {
         dispatch({

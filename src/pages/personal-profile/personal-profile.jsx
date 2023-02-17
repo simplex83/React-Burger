@@ -19,8 +19,9 @@ export function PersonalPage() {
     password: "",
     isChange: false,
   });
+
   useEffect(() => {
-    setUserData(user);
+    setUserData({ name: user.name, email: user.email, password: '' });
   }, [user]);
 
   const onChangeRersonal = (evt) => {

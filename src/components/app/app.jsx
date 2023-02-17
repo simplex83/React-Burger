@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch} from "react-redux";
 import styles from "./app.module.css";
 import AppHeader from "../app-header/app-header";
 import { getIngredients } from "../../services/actions/ingredients";
@@ -20,17 +20,21 @@ import { ProtectedRouteElement } from "../../components/protect";
 import { getUserInfo } from "../../services/actions/authorization";
 import { Modal } from "../modal/modal";
 import { IngredientDetails } from "../ingredient-details/ingredient-details";
+import { getCookie } from "../../utils/cookies";
 
 export function App() {
   const dispatch = useDispatch();
+  const location = useLocation();
+  const background = location.state && location.state.background;
+  
+
+  useEffect(() => {
+    if (getCookie('accessToken')) dispatch(getUserInfo());
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(getIngredients());
-    dispatch(getUserInfo());
   }, [dispatch]);
-
-  const location = useLocation();
-  const background = location.state && location.state.background;
 
   return (
     <div className={`${styles.container}`}>
@@ -40,31 +44,31 @@ export function App() {
         <Route
           path="/login"
           element={
-            <ProtectedRouteElement forAuth={false} element={<LoginPage />} />
+            <ProtectedRouteElement element={<LoginPage />} />
           }
         />
         <Route
           path="/register"
           element={
-            <ProtectedRouteElement forAuth={false} element={<RegisterPage />} />
+            <ProtectedRouteElement element={<RegisterPage />} />
           }
         />
         <Route
           path="/forgot-password"
           element={
-            <ProtectedRouteElement forAuth={false} element={<ForgotPage />} />
+            <ProtectedRouteElement element={<ForgotPage />} />
           }
         />
         <Route
           path="/reset-password"
           element={
-            <ProtectedRouteElement forAuth={false} element={<ResetPage />} />
+            <ProtectedRouteElement element={<ResetPage />} />
           }
         />
         <Route
           path="/profile"
           element={
-            <ProtectedRouteElement forAuth={true} element={<ProfilePage />} />
+            <ProtectedRouteElement  element={<ProfilePage />} />
           }
         >
           <Route path="" element={<PersonalPage />} />

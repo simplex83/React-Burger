@@ -1,8 +1,8 @@
-import { baseUrl } from './const'
+import { BASE_URL} from './const'
 import { getCookie, setCookie } from './cookies';
 
 export function getData() {
-    const res = fetch(`${baseUrl}/ingredients`, {
+    const res = fetch(`${BASE_URL}/ingredients`, {
       method: 'GET',
       header: {
         'Content-type': 'application/json'
@@ -19,10 +19,11 @@ export function getData() {
   }
   
  export function makeOrder(data)  {
-  const res = fetch(`${baseUrl}/orders`, {
+  const res = fetch(`${BASE_URL}/orders`, {
     method: 'POST',
     headers: {
-      'Content-type': 'application/json'
+      'Content-type': 'application/json',
+      authorization: "Bearer " + getCookie("accessToken")
     },
     body: JSON.stringify({
       "ingredients": data
@@ -32,7 +33,7 @@ export function getData() {
 }
 
 export function forgotPassword(email)  {
-  const res = fetch(`${baseUrl}/password-reset`, {
+  const res = fetch(`${BASE_URL}/password-reset`, {
     method: 'POST',
     headers: {
       'Content-type': 'application/json'
@@ -45,7 +46,7 @@ export function forgotPassword(email)  {
 }
 
 export function resetPassword(password, code)  {
-  const res = fetch(`${baseUrl}/password-reset/reset`, {
+  const res = fetch(`${BASE_URL}/password-reset/reset`, {
     method: 'POST',
     headers: {
       'Content-type': 'application/json'
@@ -59,7 +60,7 @@ export function resetPassword(password, code)  {
 }
 
 export function getRegister(user) {
-  const res = fetch(`${baseUrl}/auth/register`, {
+  const res = fetch(`${BASE_URL}/auth/register`, {
     method: 'POST',
     headers: {
       'Content-type': 'application/json'
@@ -74,7 +75,7 @@ export function getRegister(user) {
 }
 
 export function getLogin(user) {
-  const res = fetch(`${baseUrl}/auth/login`, {
+  const res = fetch(`${BASE_URL}/auth/login`, {
     method: 'POST',
     headers: {
       'Content-type': 'application/json'
@@ -90,7 +91,7 @@ export function getLogin(user) {
 }
 
  export function getLogout() {
-  const res = fetch(`${baseUrl}/auth/logout`, {
+  const res = fetch(`${BASE_URL}/auth/logout`, {
     method: 'POST',
     headers: {
       'Content-type': 'application/json'
@@ -104,7 +105,7 @@ export function getLogin(user) {
  }
 
  export function updateUser(userData) {
-  const res = fetch(`${baseUrl}/auth/user`, {
+  const res = fetch(`${BASE_URL}/auth/user`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
@@ -120,11 +121,11 @@ export function getLogin(user) {
  }
 
  export function getUser() {
-  const res = fetch(`${baseUrl}/auth/user`, {
+  const res = fetch(`${BASE_URL}/auth/user`, {
     method: 'GET',
     headers: {
       "Content-Type": "application/json",
-      authorization: "Bearer " + getCookie("accessToken"),
+      authorization: "Bearer " + getCookie("accessToken")
     },
   });
   return res.then(getResponse)
@@ -132,7 +133,7 @@ export function getLogin(user) {
  }
 
  export function updateToken(token) {
-  const res = fetch(`${baseUrl}/auth/token/`, {
+  const res = fetch(`${BASE_URL}/auth/token/`, {
     method: 'POST',
     headers: {
       'Content-type': 'application/json'

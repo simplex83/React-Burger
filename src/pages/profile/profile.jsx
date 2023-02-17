@@ -1,15 +1,17 @@
 import React from 'react';
 import styles from './profile.module.css';
 import { NavLink, useLocation,Outlet } from "react-router-dom";
-import { useDispatch } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
 import { logout } from '../../services/actions/authorization';
 
 export function ProfilePage() {
     const {pathname} =useLocation()
     const dispatch = useDispatch();
     const signout = () => {dispatch(logout())}
+    const user = useSelector(store => store.auth.user);
 
 return (
+  user ? (
     <div className= {styles.wrapper}>
     <nav>
         <ul className={styles.list}>
@@ -52,6 +54,6 @@ return (
     </nav>
         <Outlet />
     </div>
-
+) : <></>
 )
 }

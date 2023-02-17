@@ -23,7 +23,7 @@ function BurgerConstructor() {
   const { selectedItems, selectedBun } = useSelector(
     (store) => store.burgerConstructor
   );
-  const { orderNumber} = useSelector((store) => store.orderDetails);
+  const { orderNumber } = useSelector((store) => store.orderDetails);
   const user = useSelector((store) => store.auth.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -40,15 +40,18 @@ function BurgerConstructor() {
   }, [selectedBun, selectedItems]);
 
   function handleClick() {
-if(!user) {
-  navigate("/login");
-  return;
-}
+    if (!user) {
+      navigate("/login");
+      return;
+    }
     const ingredientsId = [];
     selectedBun.map((el) => {
       ingredientsId.push(el._id);
     });
     selectedItems.map((el) => {
+      ingredientsId.push(el._id);
+    });
+    selectedBun.map((el) => {
       ingredientsId.push(el._id);
     });
     dispatch(createOrder(ingredientsId));
@@ -62,7 +65,6 @@ if(!user) {
       dispatch(addIngredient(ingredient));
     },
   });
-
 
   const borderColor = isHover ? "green" : "transparent";
 
