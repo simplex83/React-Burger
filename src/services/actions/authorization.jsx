@@ -6,7 +6,7 @@ import {
   getUser,
   updateToken,
 } from "../../utils/api";
-import { setCookie, deleteCookie } from "../../utils/cookies";
+import { setCookie, deleteCookie, getCookie } from "../../utils/cookies";
 
 export const REG_REQUEST = "REG_REQUEST";
 export const REG_SUCCESS = "REG_SUCCESS";
@@ -96,7 +96,7 @@ export function logout() {
 
 export const refreshToken = (cb) => {
   return function (dispatch) {
-    const token = localStorage.getItem("refresh");
+    const token = getCookie("refreshToken");
     updateToken(token).then(() => dispatch(cb));
   };
 };
