@@ -8,7 +8,7 @@ import {
 import { NavLink, useLocation } from "react-router-dom";
 import styles from "./app-header.module.css";
 
-function AppHeader() {
+export function AppHeader() {
   const { pathname } = useLocation();
   return (
     <header className={styles.header}>
@@ -27,11 +27,11 @@ function AppHeader() {
           </li>
 
           <li className={`${styles.header__item} mr-28`}>
-            <ListIcon type={pathname === "/*" ? "primary" : "secondary"} />
+            <ListIcon type={pathname === "/feed" ? "primary" : "secondary"} />
             <NavLink
-              to="/*"
+              to="/feed"
               className={
-                pathname === "/*" ? `${styles.activelink} ` : `${styles.link} `
+                pathname === "/feed" ? `${styles.activelink} ` : `${styles.link} `
               }
             >
               Лента заказов

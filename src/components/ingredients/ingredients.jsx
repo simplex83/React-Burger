@@ -27,7 +27,7 @@ function Ingredients({ title, card }) {
             <Link
                   className={`${styles.link}`}
                   to={`/ingredients/${card._id}`}
-                  state={{ background: location }}
+                  state={{ ingredient: location }}
                 >
             <Card card={card} />
             </Link>

@@ -1,6 +1,6 @@
 import React from "react";
-import { useEffect } from "react";
-import { useDispatch} from "react-redux";
+import { useEffect} from "react";
+import { useDispatch } from "react-redux";
 import styles from "./app.module.css";
 import AppHeader from "../app-header/app-header";
 import { getIngredients } from "../../services/actions/ingredients";
@@ -15,6 +15,9 @@ import {
   ProfilePage,
   PersonalPage,
   IngredientPage,
+  FeedPage,
+  OrderPage,
+  FeedPageDetails
 } from "../../pages";
 import { ProtectedRouteElement } from "../../components/protect";
 import { getUserInfo } from "../../services/actions/authorization";
@@ -25,8 +28,13 @@ import { getCookie } from "../../utils/cookies";
 export function App() {
   const dispatch = useDispatch();
   const location = useLocation();
-  const background = location.state && location.state.background;
   
+  const background =
+    location.state?.ingredient ||
+    location.state?.feed ||
+    location.state?.profile ||
+    location;
+
 
   useEffect(() => {
     if (getCookie('accessToken')) dispatch(getUserInfo());
@@ -39,7 +47,7 @@ export function App() {
   return (
     <div className={`${styles.container}`}>
       <AppHeader />
-      <Routes>
+      <Routes location={background}>
         <Route path="/" element={<Main />} />
         <Route
           path="/login"
@@ -72,16 +80,20 @@ export function App() {
           }
         >
           <Route path="" element={<PersonalPage />} />
-          {/* <Route path="/orders" element={<OrderPage />}/> */}
+          <Route path="orders" element={<OrderPage />}/>
+          
         </Route>
+        <Route path='/profile/orders/:id' element={<ProtectedRouteElement element={<FeedPageDetails/>} />} />
         <Route path="/*" element={<ErrorPage />} />
-        <Route path={`/ingredients/:id`} element={<IngredientPage />} />
+        <Route path='/ingredients/:id' element={<IngredientPage />} />
+        <Route path='/feed' element={<FeedPage/>} />
+        <Route path='/feed/:id' element={<FeedPageDetails />} />
       </Routes>
 
-      {background && (
+      {location.state?.ingredient && (
         <Routes>
           <Route
-            path="ingredients/:id"
+            path='ingredients/:id'
             element={
               <Modal closePopup={() => window.history.back()}>
                 <IngredientDetails />
@@ -90,6 +102,31 @@ export function App() {
           />
         </Routes>
       )}
+   {location.state?.feed && (
+        <Routes>
+          <Route
+            path='feed/:id'
+            element={
+              <Modal closePopup={() => window.history.back()}>
+                <FeedPageDetails />
+              </Modal>
+            }
+          />
+        </Routes>
+      )} 
+
+{location.state?.profile && (
+        <Routes>
+          <Route
+            path='profile/orders/:id'
+            element={
+              <Modal closePopup={() => window.history.back()}>
+                <FeedPageDetails />
+              </Modal>
+            }
+          />
+        </Routes>
+      )} 
     </div>
   );
 }

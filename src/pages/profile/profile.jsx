@@ -9,7 +9,7 @@ export function ProfilePage() {
     const dispatch = useDispatch();
     const signout = () => {dispatch(logout())}
     const user = useSelector(store => store.auth.user);
-
+ 
 return (
   user ? (
     <div className= {styles.wrapper}>
@@ -28,8 +28,8 @@ return (
             </li>
             <li className={styles.item}>
             <NavLink
-                to="/orders"
-                className={pathname === "/orders"
+                to="/profile/orders"
+                className={pathname === "/profile/orders"
                     ? `${styles.activelink} text text_type_main-medium`
                     : `${styles.link} text text_type_main-medium text_color_inactive`
                 }

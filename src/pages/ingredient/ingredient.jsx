@@ -1,26 +1,17 @@
 import React from "react";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getIngredients } from "../../services/actions/ingredients";
-
 import styles from "./ingredient.module.css";
 
 export function IngredientPage() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getIngredients());
-  }, [dispatch]);
-
+  
+  const ingredients = useSelector((store) => store.ingredients.ingredients);
   const { id } = useParams();
+  const data = ingredients.find((el) => el._id === id);
 
-  const { ingredients } = useSelector((store) => ({
-    ingredients: store.ingredients.ingredients,
-  }));
-
-  const data = ingredients.find((item) => item._id === id);
-  if (ingredients.length > 0) {
     return (
+      data && (
+        <>
       <div className={`${styles.card} pt-10 pl-10 pb-15`}>
         <h2 className={`${styles.title} text text_type_main-large`}>
           Детали ингредиента
@@ -74,6 +65,8 @@ export function IngredientPage() {
           </li>
         </ul>
       </div>
-    );
+      </>
+    )
+    )
   }
-}
+

@@ -11,13 +11,12 @@ export function getData() {
     return res.then(getResponse)
     
   }
-
   function getResponse(res) {
     if(res.ok) {
         return res.json()
       } else Promise.reject(`Ошибка ${res.status}`);
   }
-  
+
  export function makeOrder(data)  {
   const res = fetch(`${BASE_URL}/orders`, {
     method: 'POST',
@@ -89,7 +88,6 @@ export function getLogin(user) {
   return res.then(getResponse)
 
 }
-
  export function getLogout() {
   const res = fetch(`${BASE_URL}/auth/logout`, {
     method: 'POST',
