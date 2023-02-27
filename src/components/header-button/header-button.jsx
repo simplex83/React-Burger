@@ -1,10 +1,9 @@
-import React from 'react';
-import styles from './header-button.module.css';
-import PropTypes from 'prop-types';
-import {typeIngredients} from '../../utils/types';
+import React from "react";
+import styles from "./header-button.module.css";
+import PropTypes from "prop-types";
+import { typeIngredients } from "../../utils/types";
 
 export function HeaderButton(props) {
-
   return (
     <a className={`${styles.button} pl-5 pr-5`}>
       <props.type type={`${props.isActive ? "primary" : "secondary"}`} />
@@ -20,5 +19,5 @@ export function HeaderButton(props) {
 }
 HeaderButton.propTypes = {
   isActive: PropTypes.bool.isRequired,
-  text: PropTypes.string.isRequired
-}
+  text: PropTypes.string.isRequired,
+};

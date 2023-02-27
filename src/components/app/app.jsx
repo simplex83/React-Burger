@@ -35,7 +35,6 @@ export function App() {
     location.state?.profile ||
     location;
 
-
   useEffect(() => {
     if (getCookie('accessToken')) dispatch(getUserInfo());
   }, [dispatch]);

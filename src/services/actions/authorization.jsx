@@ -97,7 +97,7 @@ export function logout() {
 export const refreshToken = (cb) => {
   return function (dispatch) {
     const refreshToken = getCookie("refreshToken");
-    console.log(refreshToken)
+    console.log(refreshToken);
     updateToken(refreshToken).then(() => dispatch(cb));
   };
 };
@@ -119,7 +119,7 @@ export function update(userData) {
       })
       .catch((res) => {
         dispatch({ type: UPDATE_USER_ERROR });
-        if (res.message === "jwt expired" || "jwt malformed") {
+        if (res.message === "jwt expired" || res.message === "jwt malformed") {
           console.error(res.message);
           dispatch(refreshToken(update(userData)));
         }
@@ -128,7 +128,7 @@ export function update(userData) {
 }
 
 export function getUserInfo() {
-  console.log('мы гетюзеринфо');
+  console.log("мы гетюзеринфо");
   return function (dispatch) {
     dispatch({
       type: GET_USER_REQUEST,
@@ -144,10 +144,10 @@ export function getUserInfo() {
         }
       })
       .catch((res) => {
-        console.log( 'сообщение в res', res.message);
+        console.log("сообщение в res", res.message);
         dispatch({ type: GET_USER_ERROR });
-        if (res.message === "jwt expired" || "jwt malformed") {
-        dispatch(refreshToken(getUserInfo()));
+        if (res.message === "jwt expired" || res.message === "jwt malformed") {
+          dispatch(refreshToken(getUserInfo()));
         }
       });
   };
