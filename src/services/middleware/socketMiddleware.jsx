@@ -26,7 +26,14 @@ export const socketMiddleware = (wsUrl, wsActions) => {
           const { data } = event;
           const parseData = JSON.parse(data);
           const { success, ...restData } = parseData;
+          if (
+           restData.message === "Invalid or missing token" ||
+          restData.message === "jwt expired"
+           ) {            
+            dispatch({ type: onError, payload: restData.message });
+           } else {
           dispatch({ type: onMessage, payload: restData });
+           }
         };
         socket.onclose = event => {
           dispatch({ type: onClose, payload: event });

@@ -10,10 +10,7 @@ import { useEffect } from 'react';
 
 export function OrderPage() { 
   const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(getIngredients());
-  // }, [dispatch]);
-
+  
   const {orders}  = useSelector((store) => store.ws);
   useEffect(() => {
     dispatch({ type: WS_CONNECTION_START_AUTH })

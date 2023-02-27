@@ -96,8 +96,9 @@ export function logout() {
 
 export const refreshToken = (cb) => {
   return function (dispatch) {
-    const token = getCookie("refreshToken");
-    updateToken(token).then(() => dispatch(cb));
+    const refreshToken = getCookie("refreshToken");
+    console.log(refreshToken)
+    updateToken(refreshToken).then(() => dispatch(cb));
   };
 };
 
@@ -118,7 +119,7 @@ export function update(userData) {
       })
       .catch((res) => {
         dispatch({ type: UPDATE_USER_ERROR });
-        if (res.message === "jwt expired") {
+        if (res.message === "jwt expired" || "jwt malformed") {
           console.error(res.message);
           dispatch(refreshToken(update(userData)));
         }
@@ -127,6 +128,7 @@ export function update(userData) {
 }
 
 export function getUserInfo() {
+  console.log('мы гетюзеринфо');
   return function (dispatch) {
     dispatch({
       type: GET_USER_REQUEST,
@@ -142,9 +144,11 @@ export function getUserInfo() {
         }
       })
       .catch((res) => {
+        console.log( 'сообщение в res', res.message);
         dispatch({ type: GET_USER_ERROR });
-        if (res.message === "jwt expired") console.log(res.message);
+        if (res.message === "jwt expired" || "jwt malformed") {
         dispatch(refreshToken(getUserInfo()));
+        }
       });
   };
 }

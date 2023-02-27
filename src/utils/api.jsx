@@ -1,5 +1,5 @@
 import { BASE_URL} from './const'
-import { getCookie, setCookie } from './cookies';
+import { deleteCookie, getCookie, setCookie } from './cookies';
 
 export function getData() {
     const res = fetch(`${BASE_URL}/ingredients`, {
@@ -13,8 +13,9 @@ export function getData() {
   }
   function getResponse(res) {
     if(res.ok) {
-        return res.json()
-      } else Promise.reject(`Ошибка ${res.status}`);
+        return res.json();
+      } 
+      return res.json().then(err => Promise.reject(err));
   }
 
  export function makeOrder(data)  {
@@ -119,6 +120,7 @@ export function getLogin(user) {
  }
 
  export function getUser() {
+  console.log('сейчас мы попробуем подргузить юзера');
   const res = fetch(`${BASE_URL}/auth/user`, {
     method: 'GET',
     headers: {
@@ -131,19 +133,21 @@ export function getLogin(user) {
  }
 
  export function updateToken(token) {
-  const res = fetch(`${BASE_URL}/auth/token/`, {
+  console.log('мы внутри updateToken');
+  return fetch(`${BASE_URL}/auth/token/`, {
     method: 'POST',
     headers: {
       'Content-type': 'application/json'
     },
     body: JSON.stringify({
-      "token": token
+      token: token
     })
   })
   .then(getResponse)
   .then(res => {
-    setCookie('refresh', res.refreshToken);
-    setCookie('token', res.accessToken);
+    console.log('счас будем ставить новые куки', res);
+    setCookie('refreshToken', res.refreshToken);
+    setCookie('accessToken', res.accessToken.split("Bearer "[1]));
   })
   .catch((err) => console.log(err.status))
-}
+ }
