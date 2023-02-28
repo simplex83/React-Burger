@@ -116,7 +116,6 @@ export function updateUser(userData) {
 }
 
 export function getUser() {
-  console.log("сейчас мы попробуем подргузить юзера");
   const res = fetch(`${BASE_URL}/auth/user`, {
     method: "GET",
     headers: {
@@ -128,7 +127,6 @@ export function getUser() {
 }
 
 export function updateToken(token) {
-  console.log("мы внутри updateToken");
   return fetch(`${BASE_URL}/auth/token/`, {
     method: "POST",
     headers: {
@@ -140,7 +138,6 @@ export function updateToken(token) {
   })
     .then(getResponse)
     .then((res) => {
-      console.log("счас будем ставить новые куки", res);
       setCookie("refreshToken", res.refreshToken);
       setCookie("accessToken", res.accessToken.split("Bearer ")[1]);
     })

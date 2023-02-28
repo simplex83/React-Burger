@@ -23,7 +23,10 @@ function BurgerConstructor() {
   const { selectedItems, selectedBun } = useSelector(
     (store) => store.burgerConstructor
   );
-  const { orderNumber } = useSelector((store) => store.orderDetails);
+  const { orderNumber, orderRequest} = useSelector(store => ({
+    orderNumber: store.orderDetails.orderNumber,
+    orderRequest: store.orderDetails.orderRequest
+  }));
   const user = useSelector((store) => store.auth.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -55,7 +58,9 @@ function BurgerConstructor() {
       ingredientsId.push(el._id);
     });
     dispatch(createOrder(ingredientsId));
+   
   }
+
   const [{ isHover }, dropTarget] = useDrop({
     accept: "ingredients",
     collect: (monitor) => ({
@@ -137,7 +142,7 @@ function BurgerConstructor() {
           Оформить заказ
         </Button>
       </section>
-      {orderNumber && (
+      {(orderNumber || orderRequest) && (
         <Modal closePopup={closePopup}>
           <OrderDetails />
         </Modal>

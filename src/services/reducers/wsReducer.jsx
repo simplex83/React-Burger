@@ -2,12 +2,14 @@
 import {  
  WS_CONNECTION_SUCCESS,
 WS_GET_MESSAGE,
+WS_GET_MESSAGE_AUTH,
 WS_CONNECTION_CLOSED,
 WS_CONNECTION_ERROR } from '../actions/wsActionTypes'
 
 const initialState = {
     wsConnected: false,
     orders: [],
+    ordersAuth: [],
     total: 0,
     totalToday: 0,
     error: undefined
@@ -38,6 +40,14 @@ export const wsReducer = (state = initialState, action) => {
           ...state,
             error: undefined,
             orders: action.payload.orders,
+            total: action.payload.total,
+            totalToday: action.payload.totalToday,
+        };
+        case WS_GET_MESSAGE_AUTH:
+        return {
+          ...state,
+            error: undefined,
+            ordersAuth: action.payload.orders,
             total: action.payload.total,
             totalToday: action.payload.totalToday,
         };

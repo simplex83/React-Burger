@@ -2,14 +2,26 @@ import React from "react";
 import Done from "../../images/done.svg";
 import styles from "./order-details.module.css";
 import { useSelector } from "react-redux";
+import { useMemo } from 'react';
 
 function OrderDetails() {
-  const { orderNumber } = useSelector((store) => store.orderDetails)
+  const { orderNumber, orderRequest} = useSelector(store => ({
+    orderNumber: store.orderDetails.orderNumber,
+    orderRequest: store.orderDetails.orderRequest
+  }));
+
+ console.log(orderRequest)
+
+  const info = useMemo(() => {
+    return orderRequest  ? (<h2 className={`text ${styles.num} mt-30`}>минуточку...</h2>) : (
+      <h2 className={`text text_type_digits-large ${styles.num} mt-30`}>{orderNumber }</h2>
+    )
+  }, [orderNumber, orderRequest]);
+  
+  
   return (
-    <>
-      <p className={`${styles.num} text text_type_digits-large mt-30`}>
-        { orderNumber }
-      </p>
+    <div className={styles.container}>
+    {info}
       <p className={`$ text text_type_main-medium mt-8 mb-15`}>
         идентификатор заказа
       </p>
@@ -22,7 +34,7 @@ function OrderDetails() {
       >
         Дождитесь готовности на орбитальной станции
       </p>
-    </>
+    </div>
   );
 }
 
