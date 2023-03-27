@@ -11,13 +11,13 @@
 Создание ленты заказов
 
 Использованные технологии:
-CSS
-HTML
-React + Redux
-JS
-API
-TypeScript
-Websocket
+* CSS
+* HTML
+* React + Redux
+* JS
+* API
+* TypeScript
+* Websocket
 
 Ссылка на проект [находится тут](https://simplex83.github.io/React-Burger/)
 
