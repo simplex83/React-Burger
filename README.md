@@ -19,7 +19,7 @@ API
 *TypeScript
 *Websocket
 
-##Ссылка на проект [находится тут] (https://simplex83.github.io/React-Burger/)
+##Ссылка на проект [находится тут](https://simplex83.github.io/React-Burger/)
 
 
 
