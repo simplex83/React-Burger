@@ -1,0 +1,64 @@
+.section {
+    width: 580px;
+    margin-top: 100px;
+    padding: 0;
+  }
+  
+  .wrapper_status {
+    margin-bottom: 60px;
+    padding: 0;
+    display: flex;
+    column-gap: 36px;
+  }
+  
+  .container_status {
+    width: 272px;
+    margin: 0;
+    padding: 0;
+    
+  }
+
+  .title {
+    margin-bottom: 24px;
+    padding: 0;
+  }
+  
+  .list_status {
+    margin: 0;
+    padding: 0;
+    width: 272px;
+    height: 152px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    row-gap: 8px;
+    list-style-type: none;
+  }
+  
+  .item_status_done {
+    margin: 0;
+    padding: 0;
+    width: 136px;
+    height: 24px;
+    color: #00cccc;
+  }
+  
+  .item_status_progress {
+    margin: 0;
+    padding: 0;
+    width: 136px;
+    height: 24px;
+    color: white;
+  } 
+  
+  .container_numb {
+    margin-bottom: 60px;
+    padding: 0;
+  }
+  
+  .ordersNumb {
+    margin: 0;
+    padding: 0;
+    text-shadow: 0px 0px 16px rgba(51, 51, 255, 0.25),
+      0px 0px 8px rgba(51, 51, 255, 0.25), 0px 4px 32px rgba(51, 51, 255, 0.5);
+  }

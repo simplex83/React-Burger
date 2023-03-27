@@ -1,0 +1,33 @@
+.wrapper {
+    margin: 120px 60px 0px 60px;
+    padding: 0;
+    display: flex;
+}
+.list {
+    list-style-type: none;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    
+    
+}
+.item {
+    min-height: 64px;
+    min-width: 320px;
+
+}
+.link {
+    list-style-type: none;
+    text-decoration: none;
+}
+
+.activelink {
+    color: white;
+    list-style-type: none;
+    text-decoration: none;
+}
+.text {
+    margin-top: 80px;
+    max-width: 320px;
+    
+}

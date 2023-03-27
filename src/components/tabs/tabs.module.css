@@ -1,0 +1,7 @@
+.container {
+    display: flex;
+    padding: 0;
+}
+.item {
+    text-decoration: none;
+}

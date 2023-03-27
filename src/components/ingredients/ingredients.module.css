@@ -1,0 +1,12 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 24px;
+  row-gap: 32px;
+  list-style: none;
+  padding-left: 0;
+}
+.link {
+  text-decoration: none;
+  color: white;
+}

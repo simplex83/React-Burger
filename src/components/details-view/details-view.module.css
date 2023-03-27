@@ -1,0 +1,95 @@
+.orderNum {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 0;
+  }
+  .orderName {
+    margin-bottom: 12px;
+    padding: 0;
+  }
+  .orderStatus {
+    color: #00cccc;
+    margin-bottom: 60px;
+    padding: 0;
+  }
+  
+  .wrapper {
+    width: 640px;
+    margin-top: 24px;
+    padding: 0;
+  }
+  
+  .ingredients {
+    width: 640px;
+    max-height: 312px;
+    padding: 0;
+    margin: 0;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: #8585ad #2f2f37;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+  }
+  .ingredients::-webkit-scrollbar {
+    width: 8px;
+  }
+  .ingredients::-webkit-scrollbar-track {
+    background: #2f2f37;
+  }
+  .ingredients::-webkit-scrollbar-thumb {
+    background-color: #8585ad;
+  }
+  
+  .ingredient {
+    margin-right: 24px;
+  
+    padding: 0;
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .ing_image {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    background: linear-gradient(#801ab2, #4c4cff);
+    width: 63px;
+    height: 63px;
+    border-radius: 50%;
+  }
+  .image {
+    background: #1c1c21;
+    width: 62px;
+    height: 62px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  
+  .ing_name {
+    margin: 0 16px 0;
+    padding: 0;
+    width: 434px;
+    min-height: 24px;
+  }
+  
+  .ing_price {
+    display: flex;
+    align-items: center;
+    column-gap: 9px;
+    width: 150px;
+    justify-content: flex-end;
+  }
+  
+  .wrapper_total {
+    margin: 40px 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  

@@ -1,0 +1,45 @@
+.container {
+  border: 1px solid transparent;
+  list-style: none;
+  min-height: 300px;
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.ingredient {
+  list-style: none;
+}
+
+.fillings {
+  margin: 0;
+  padding: 0;
+  max-height: 464px;
+  overflow-y: scroll;
+  list-style: none;
+}
+
+.fillings::-webkit-scrollbar {
+  width: 8px;
+  background-color: #2f2f37;
+}
+
+.fillings::-webkit-scrollbar-thumb {
+  background-color: #8585AD;
+  border: 3px solid #8585AD;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.newbun {
+  margin: 100px 20px 0px 20px;
+  text-align: center;
+}
+.newmain {
+  margin: 10px 20px 0px 20px;
+  text-align: center;
+}
