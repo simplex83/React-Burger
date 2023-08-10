@@ -1,11 +1,14 @@
 
-## Проект "Stellar Burger"
+# Проект "Stellar Burger"
+## Описание проекта
+
 Разработано десктопное приложение бургерной с функциональностью сборки бургера в конструкторе (React Drag and Drop), сортировка ингредиентов внутри корзины, оформления и отправки заказа, просмотра детальной информации об ингредиентах, просмотра ленты заказов (WebSocket), регистрации и авторизации в приложении с возможностью восстановления забытого пароля(JWT), создания и редактирования профиля в личном кабинете и просмотра истории заказов.
 
-Стек технологий: CSS, HTML, React, React Router, Redux, Redux Thunk, TypeScript, Websocket, REST API, Jest, Cypress
+## Стек технологий
+CSS, HTML, React, React Router, Redux, Redux Thunk, TypeScript, Websocket, REST API, Jest, Cypress
 
 
-Ссылка на проект [находится тут](https://simplex83.github.io/React-Burger/)
+### Ссылка на проект [находится тут](https://simplex83.github.io/React-Burger/)
 
 
 
